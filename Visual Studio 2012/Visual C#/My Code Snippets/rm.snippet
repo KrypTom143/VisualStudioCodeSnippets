@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>rm</Title>
+			<Shortcut>rm</Shortcut>
+			<Description>Code snippet for an region method</Description>
+			<Author>Richard Adleta</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>Name</ID>
+					<ToolTip>The name of the method</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+  <![CDATA[#region Method $Name$
+
+$end$
+
+#endregion]]>
+</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

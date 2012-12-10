@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>pfk</Title>
+			<Shortcut>pfk</Shortcut>
+			<Description>Code snippet for an automatically implemented an entity foreign key property</Description>
+			<Author>Richard Adleta</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>MyProperty</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[#region Property $property$Id
+
+private int _$property$Id;
+
+/// <summary>
+/// Gets or sets the $property$Id.
+/// </summary>
+public int $property$Id
+{
+  get
+  {
+      // only return the instance's Id if the
+      // instance exists
+      if (_$property$ != null)
+      {
+          return _$property$.Id;
+      }
+      return _$property$Id;
+  }
+  set
+  {
+      // clear the instance value if the property is being set to something other than
+      // what the instance Id is if it exists
+      if (_$property$ != null && (value <= 0 || (value > 0 && _$property$.Id != value)))
+      {
+          _$property$ = null;
+      }
+      _$property$Id = value;
+  }
+}
+
+#endregion
+
+#region Property $property$
+
+private $type$ _$property$;
+
+/// <summary>
+/// Gets or sets the $property$.
+/// </summary>
+public $type$ $property$
+{
+    get
+    {
+        return _$property$;
+    }
+    set
+    {
+        // if we clear the instance then clear the Id
+        // property as well
+        if (value == null)
+        {
+            _$property$Id = 0;
+        }
+        _$property$ = value;
+    }
+}
+
+#endregion$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>ee</Title>
+			<Shortcut>ee</Shortcut>
+			<Description>Code snippet for a enumeration check to test for a flag is set.</Description>
+			<Author>Richard Adleta</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>EnumType</ID>
+					<ToolTip>The type of the enumeration.</ToolTip>
+					<Default>EnumType</Default>
+				</Literal>
+        <Literal>
+          <ID>Value</ID>
+          <ToolTip>The flag within the enuration to test.</ToolTip>
+          <Default>Value</Default>
+        </Literal>
+        <Literal>
+          <ID>Variable</ID>
+          <ToolTip>The enum variable.</ToolTip>
+          <Default>var</Default>
+        </Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[($EnumType$.$Value$ == ($EnumType$.$Value$ & $Variable$))$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

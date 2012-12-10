@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>pdw</Title>
+			<Shortcut>pdw</Shortcut>
+			<Description>Code snippet for an automatically implemented property dictionary wrapper</Description>
+			<Author>Richard Adleta</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>MyProperty</Default>
+				</Literal>
+        <Literal>
+          <ID>key</ID>
+          <ToolTip>Key value</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+			</Declarations>
+			<Code Language="csharp">
+<![CDATA[#region Property $property$
+
+public const string $property$Key = "$key$";
+
+/// <summary>
+/// Gets or sets the $property$
+/// </summary>
+public $type$ $property$
+{
+    get
+    {
+        return GetPropertyValue<$type$>($property$Key);
+    }
+    set
+    {
+        SetPropertyValue<$type$>($property$Key, value);
+    }
+}
+
+#endregion$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

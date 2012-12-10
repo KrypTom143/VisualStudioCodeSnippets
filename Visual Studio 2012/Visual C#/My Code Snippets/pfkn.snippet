@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>pfkn</Title>
+			<Shortcut>pfkn</Shortcut>
+			<Description>Code snippet for an automatically implemented a nullable entity foreign key property</Description>
+			<Author>Richard Adleta</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>MyProperty</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[#region Property $property$Id
+
+private int? _$property$Id;
+
+/// <summary>
+/// Gets or sets the $property$Id.
+/// </summary>
+public int? $property$Id
+{
+    get
+    {
+        if (_$property$ != null)
+        {
+            return _$property$.Id;
+        }
+        return _$property$Id;
+    }
+    set
+    {
+        if (_$property$ != null && (!value.HasValue || (value.HasValue && _$property$.Id != value.Value)))
+        {
+            _$property$ = null;
+        }
+        _$property$Id = value;
+    }
+}
+
+#endregion
+
+#region Property $property$
+
+private $type$ _$property$;
+
+/// <summary>
+/// Gets or sets the $property$.
+/// </summary>
+public $type$ $property$
+{
+    get
+    {
+        return _$property$;
+    }
+    set
+    {
+        if (value == null)
+        {
+            _$property$Id = null;
+        }
+        _$property$ = value;
+    }
+}
+
+#endregion$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
